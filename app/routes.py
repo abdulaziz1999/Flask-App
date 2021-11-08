@@ -3,6 +3,7 @@ from app import app, response
 from app.controller import DosenController
 from app.controller import UserController
 from app.controller import ProdiController
+from app.controller import MahasiswaController
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
@@ -44,6 +45,12 @@ def dosensDetail(id):
 @jwt_required()
 def prodi():
     return ProdiController.index()
+
+#route mahasiswa
+@app.route('/mahasiswa', methods=['GET'])
+@jwt_required()
+def mahasiswa():
+    return MahasiswaController.index()
 
 # routes login
 @app.route('/login', methods=['POST'])
